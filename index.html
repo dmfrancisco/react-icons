@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>React Component for Icons using Inline SVG</title>
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.2/normalize.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night.min.css" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700|Source+Code+Pro:400" rel="stylesheet">
+
+  <style>
+    html, body {
+      width: 100%;
+    }
+    .readme {
+      color: #1d1f21;
+      font-family: Source Sans Pro, monospace;
+      font-size: 20px;
+      line-height: 1.5;
+      margin: 0 auto;
+      padding: 60px 20px 180px;
+      width: 940px;
+    }
+    .readme h1 {
+      letter-spacing: -0.5px;
+      text-indent: -1px;
+    }
+    .readme h2 {
+      margin-top: 60px;
+    }
+    .readme a {
+      color: #81a2be;
+    }
+    .readme a:visited {
+      color: #b294bb;
+    }
+    .readme > *:first-child {
+      margin-top: 0;
+    }
+    .readme > *:last-child {
+      margin-bottom: 0;
+    }
+    .toolbar {
+      background: #2d2d2d;
+      bottom: 0;
+      box-shadow: 0 -2px 5px 0 rgba(0,0,0,.26);
+      left: 0;
+      position: fixed;
+      width: 100%;
+    }
+    .toolbar .toolbar--content {
+      margin: 0 auto;
+      padding: 0 20px;
+      width: 940px;
+    }
+    .toolbar textarea {
+      background: #2d2d2d;
+      border: none;
+      color: #ccc;
+      height: 120px;
+      outline: none;
+      padding: 10px 20px;
+      resize: vertical;
+      width: 100%;
+    }
+    .readme pre,
+    .toolbar textarea {
+      font-family: Source Code Pro, monospace;
+      font-size: 16px;
+      margin: 0;
+    }
+    .readme pre code {
+      padding: 20px;
+    }
+    #icons ul {
+      font-size: 16px;
+      list-style: none;
+      margin-bottom: 40px;
+      overflow: hidden;
+      padding-left: 0;
+      width: 940px;
+    }
+    #icons li {
+      float: left;
+      margin-bottom: 20px;
+      width: 25%;
+    }
+    .icon-name {
+      font-weight: 200;
+      padding-left: 5px;
+    }
+    ::-moz-selection {
+      background: #d6edff;
+      color: #222;
+    }
+    ::selection {
+      background: #d6edff;
+      color: #222;
+    }
+  </style>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+  <div class="readme">
+    <h1>React Component for Icons using Inline SVG</h1>
+
+    <p>React <a href="http://facebook.github.io/react/docs/tags-and-attributes.html#svg-elements">supports</a>
+    several SVG elements which means you can embed your icon code directly into a component. Inline SVG has
+    <a href="http://caniuse.com/#feat=svg-html5">good browser support</a> and by using it you can save HTTP
+    requests, icons are still cachable and you can control them using CSS.</p>
+
+    <p>Here's a very simple implementation of an <strong>Icon</strong> component with 2 icons:</p>
+
+<pre><code class="typescript">React.createClass({
+  propTypes: {
+    icon: React.PropTypes.string.isRequired,
+    size: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.number
+    ]),
+    style: React.PropTypes.object
+  },
+  getDefaultProps() {
+    return {
+      size: 24
+    };
+  },
+  _mergeStyles(...args) {
+    // This is the m function from &quot;CSS in JS&quot; and can be extracted to a mixin
+    return Object.assign({}, ...args);
+  },
+  renderGraphic() {
+    switch (this.props.icon) {
+      case &apos;my-icon&apos;:
+        return (
+          &lt;g&gt;&lt;path d=&quot;M7.41 7.84l4.59 4.58 4.59-4.58 1.41 1.41-6 6-6-6z&quot;/&gt;&lt;/g&gt;
+        );
+      case &apos;another-icon&apos;:
+        return (
+          &lt;g&gt;&lt;path d=&quot;M7.41 15.41l4.59-4.58 4.59 4.58 1.41-1.41-6-6-6 6z&quot;/&gt;&lt;/g&gt;
+        );
+      // Add more icons here
+    }
+  },
+  render() {
+    let styles = {
+      fill: &quot;currentcolor&quot;,
+      verticalAlign: &quot;middle&quot;,
+      width: this.props.size // CSS instead of the width attr to support non-pixel units
+    };
+    return (
+      &lt;svg viewBox=&quot;0 0 24 24&quot; preserveAspectRatio=&quot;xMidYMid meet&quot; fit
+        style={this._mergeStyles(
+          styles,
+          this.props.style // This lets the parent pass custom styles
+        )}&gt;
+          {this.renderGraphic()}
+      &lt;/svg&gt;
+    );
+  }
+});</code></pre>
+
+    <p>This component can be later used like this:</p>
+
+    <pre><code class="html">&lt;Icon size=&quot;2rem&quot; icon=&quot;my-icon&quot; /&gt;</code></pre>
+
+    <p>JSX supports multiline strings, so you can add line breaks to the <code>d</code> attribute safely.<br/> For an <strong>IconButton</strong>
+    component <a href="https://github.com/dmfrancisco/react-icons/blob/master/components/icon-button-component.jsx">check out the source</a>.</p>
+
+    <h2>Icon Set from the Polymer Project</h2>
+
+    <p>Browse a collection of optimized SVG icons created by the
+    <a href="https://github.com/Polymer/core-icons">Polymer Team</a>.<br/>
+    Here we included the 796 icons, but you should pick only the ones you need.</p>
+
+    <div id="icons"></div>
+  </div>
+
+  <script src="build.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "dependencies": {
+    "react": "^0.13.1"
+  },
+  "devDependencies": {
+    "babel": "^4.4.5",
+    "babelify": "^5.0.3",
+    "browserify": "^9.0.3",
+    "uglify-js": "^2.4.17",
+    "watchify": "^2.4.0"
+  },
+  "scripts": {
+    "build": "browserify demo.jsx -t babelify -o build.js && uglifyjs build.js -o build.min.js",
+    "watch": "watchify demo.jsx -t babelify -o build.min.js"
+  }
+}
