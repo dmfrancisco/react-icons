@@ -59,7 +59,7 @@ let IconList = React.createClass({
         return (
           <li key={index}>
             <IconButton onClick={this.handleClick.bind(this, icon)} icon={icon}/>
-            <span className="icon-name">{icon}</span>
+            <span className="icon-name">{icon.substring(0,27)}</span>
           </li>
         );
       });
