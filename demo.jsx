@@ -19,6 +19,10 @@ let CodePreview = React.createClass({
     node.focus();
     node.select();
   },
+  componentDidUpdate() {
+    let node = React.findDOMNode(this);
+    node.scrollTop = 0;
+  },
   render() {
     return (
       <textarea
