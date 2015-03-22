@@ -21,7 +21,7 @@ let CodePreview = React.createClass({
   },
   componentDidUpdate() {
     let node = React.findDOMNode(this);
-    node.scrollTop = 0;
+    node.wrap = "off";
   },
   render() {
     return (

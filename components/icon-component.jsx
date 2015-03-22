@@ -3235,7 +3235,8 @@ export default React.createClass({
       fill: "currentcolor",
       verticalAlign: "middle",
       // Use CSS instead of the width prop to support non-pixel units (eg: rem)
-      width: this.props.size
+      width: this.props.size,
+      height: this.props.size
     };
     return (
       <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" fit
