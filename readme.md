@@ -40,7 +40,8 @@ React.createClass({
     let styles = {
       fill: "currentcolor",
       verticalAlign: "middle",
-      width: this.props.size // CSS instead of the width attr to support non-pixel units
+      width: this.props.size, // CSS instead of the width attr to support non-pixel units
+      height: this.props.size // Prevents scaling issue in IE
     };
     return (
       <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" fit
