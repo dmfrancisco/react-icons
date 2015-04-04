@@ -148,7 +148,8 @@
     let styles = {
       fill: &quot;currentcolor&quot;,
       verticalAlign: &quot;middle&quot;,
-      width: this.props.size // CSS instead of the width attr to support non-pixel units
+      width: this.props.size, // CSS instead of the width attr to support non-pixel units
+      height: this.props.size // Prevents scaling issue in IE
     };
     return (
       &lt;svg viewBox=&quot;0 0 24 24&quot; preserveAspectRatio=&quot;xMidYMid meet&quot; fit
