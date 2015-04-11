@@ -171,7 +171,10 @@
     component <a href="https://github.com/dmfrancisco/react-icons/blob/master/components/icon-button-component.jsx">check out the source</a>.</p>
 
     <p>I found this useful in several situations, but it is not the right solution for every project. For example, if you have an isomorphic app
-    with a list of 100 items, each one with the same icon, you probably don't want the same SVG code repeated 100 times in the HTML served.</p>
+    with a list of 100 items, each one with the same icon, you probably don't want the same SVG code repeated 100 times in the HTML served.
+    Another thing to take in mind is that React adds a <code>data-reactid</code> attribute, which are standard in regular HTML5 markup but not
+    for SVG elements (however, as far as I know, this has no practical consequences).
+    </p>
 
     <h2>Icon Set from the Polymer Project</h2>
 
