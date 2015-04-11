@@ -65,7 +65,7 @@ This component can be later used like this:
 JSX supports multiline strings, so you can add line breaks to the `d` attribute safely.  
 For an **IconButton** component [check out the source](https://github.com/dmfrancisco/react-icons/blob/master/components/icon-button-component.jsx).
 
-I found this useful in several situations, but it is not the right solution for every project. For example, if you have an isomorphic app with a list of 100 items, each one with the same icon, you probably don't want the same SVG code repeated 100 times in the HTML served.
+I found this useful in several situations, but it is not the right solution for every project. For example, if you have an isomorphic app with a list of 100 items, each one with the same icon, you probably don't want the same SVG code repeated 100 times in the HTML served. Another thing to take in mind is that React adds a `data-reactid` attribute, which are standard in regular HTML5 markup but not for SVG elements (however, as far as I know, this has no practical consequences).
 
 ### Icon Set
 
